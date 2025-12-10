@@ -66,12 +66,6 @@
 
                 </div>
             </div>
-            <!-- <div>
-  <input type="text" id="noteInput" placeholder="Новая заметка">
-  <button id="addNoteBtn">Добавить</button>
-</div>
-
-<div id="notesContainer"></div> -->
 
             <div class="two2">
                 <select id="noteInput" class="titleInpText" name="Title" required>
@@ -143,18 +137,33 @@
                 // Синхронизация и отображение заметок
                 const q = query(collection(db, "notes"), orderBy("timestamp"));
                 onSnapshot(q, snapshot => {
+                    // Очищаем контейнер перед обновлением
                     notesContainer.innerHTML = "";
+
+                    // Перебор всех документов и создание блоков заметок
                     snapshot.forEach(docSnap => {
                         const note = docSnap.data();
+
+                        // Создаём блок заметки
                         const div = document.createElement("div");
                         div.classList.add("note");
                         div.innerHTML = `
-  <h1 class="title" contenteditable="true">${note.title}</h1>
-  <p class="content" contenteditable="true">${note.description}</p>
-`;
+            <h1 class="title" contenteditable="true">${note.title}</h1>
+            <p class="content" contenteditable="true">${note.description}</p>
+            <p class="date">${note.timestamp ? new Date(note.timestamp.seconds * 1000).toLocaleString() : new Date().toLocaleString()}</p>
+            <div class="controls">
+                <button class="archive">Archive</button>
+                <button class="remove">Remove</button>
+            </div>
+        `;
+
+                        // Получаем элементы внутри блока
                         const titleElem = div.querySelector(".title");
                         const contentElem = div.querySelector(".content");
+                        const archiveBtn = div.querySelector(".archive");
+                        const removeBtn = div.querySelector(".remove");
 
+                        // Сохраняем изменения в Firebase при потере фокуса
                         titleElem.addEventListener("blur", async () => {
                             await updateDoc(doc(db, "notes", docSnap.id), { title: titleElem.textContent });
                         });
@@ -163,17 +172,22 @@
                             await updateDoc(doc(db, "notes", docSnap.id), { description: contentElem.textContent });
                         });
 
+                        // Архивирование
+                        archiveBtn.addEventListener("click", async () => {
+                            await updateDoc(doc(db, "notes", docSnap.id), { isArchived: true });
+                            div.style.display = "none";
+                        });
 
-                        const delBtn = document.createElement("button");
-                        delBtn.textContent = "❌";
-                        delBtn.addEventListener("click", async () => {
+                        // Удаление заметки
+                        removeBtn.addEventListener("click", async () => {
                             await deleteDoc(doc(db, "notes", docSnap.id));
                         });
 
-                        div.appendChild(delBtn);
+                        // Добавляем блок в контейнер
                         notesContainer.appendChild(div);
                     });
                 });
+
             </script>
 
 
