@@ -176,9 +176,18 @@
 
                         // Архивирование
                         archiveBtn.addEventListener("click", async () => {
-                            await updateDoc(doc(db, "notes", docSnap.id), { isArchived: true });
-                            div.style.display = "none";
+                            try {
+                                // Обновляем поле isArchived в базе
+                                await updateDoc(doc(db, "notes", docSnap.id), { isArchived: true });
+
+                                // Ставим визуальный эффект (полупрозрачность)
+                                div.style.opacity = "0.6"; // например, 60% прозрачность
+                                div.classList.add("archived"); // для стилизации через CSS
+                            } catch (error) {
+                                console.error("Ошибка при архивировании:", error);
+                            }
                         });
+
 
                         // Удаление заметки
                         removeBtn.addEventListener("click", async () => {
