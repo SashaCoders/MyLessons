@@ -1,3 +1,5 @@
+
+
 let hh;
 let hs;
 let ms;
@@ -71,6 +73,7 @@ $("#show").click(function () {
 
 
 $(".img").click(function () {
+    console.log("ecmkoejowin");
     // $(".rules").css('display', 'none');
     $(".rules").css({
         "display": "flex",
@@ -179,6 +182,14 @@ $(document).ready(function () {
             alertify.error('У ваc пустое название.');
             return;
         }
+
+        db.collection("products").add({
+            name: title,
+            description: content
+        })
+            .then(() => console.log("Данные добавлены!"))
+            .catch(err => console.error(err));
+
 
         // Додавання нової замітки у кінец (до сотаньої замітки)
         $('#notes').append(`

@@ -13,6 +13,19 @@
     <script src="cvghh.js" defer></script>
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase App (обязательный) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+
+<!-- Дополнительно: Authentication -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<!-- Дополнительно: Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<!-- Дополнительно: Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
 </head>
 
 <body>
@@ -742,29 +755,28 @@
         </footer>
 
     </div>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    <script>
+  // Конфигурация проекта Firebase
   const firebaseConfig = {
-    apiKey: "AIzaSyDoGVp7p6wRRUxRd8QZaNJWWzhHEyFUfFU",
-    authDomain: "mylessons-29abd.firebaseapp.com",
-    projectId: "mylessons-29abd",
-    storageBucket: "mylessons-29abd.firebasestorage.app",
-    messagingSenderId: "231118261402",
-    appId: "1:231118261402:web:d851149ff68321ed716323",
-    measurementId: "G-91QYD60J05"
+    apiKey: "ТВОЙ_API_KEY",
+    authDomain: "ТВОЙ_PROJECT_ID.firebaseapp.com",
+    projectId: "ТВОЙ_PROJECT_ID",
+    storageBucket: "ТВОЙ_PROJECT_ID.appspot.com",
+    messagingSenderId: "ТВОЙ_SENDER_ID",
+    appId: "ТВОЙ_APP_ID",
+    databaseURL: "https://ТВОЙ_PROJECT_ID.firebaseio.com" // если нужен Realtime Database
   };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  // Инициализация Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+
+  // Пример подключения к Firestore
+  const db = firebase.firestore();
+
+  // Пример подключения к Realtime Database
+  const database = firebase.database();
 </script>
+
 </body>
 
 </html>
