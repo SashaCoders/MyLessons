@@ -14,11 +14,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 
-<!-- Firebase App (обязательно) -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <!-- Firebase App (обязательно) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
 
-<!-- Firebase Firestore -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
 
 </head>
 
@@ -66,63 +66,98 @@
 
                 </div>
             </div>
-<div>
+            <!-- <div>
   <input type="text" id="noteInput" placeholder="Новая заметка">
   <button id="addNoteBtn">Добавить</button>
 </div>
 
-<div id="notesContainer"></div>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+<div id="notesContainer"></div> -->
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDoGVp7p6wRRUxRd8QZaNJWWzhHEyFUfFU",
-    authDomain: "mylessons-29abd.firebaseapp.com",
-    projectId: "mylessons-29abd",
-    storageBucket: "mylessons-29abd.appspot.com",
-    messagingSenderId: "231118261402",
-    appId: "1:231118261402:web:d851149ff68321ed716323",
-    measurementId: "G-91QYD60J05"
-  };
+            <div class="two2">
+                <select id="noteInput" placeholder="Новая заметка" class="titleInpText" name="Title" required>
+                    <option value="Алгебра">Алгебра</option>
+                    <option value="Геометрія">Геометрія</option>
+                    <option value="Укр-мова">Укр-мова</option>
+                    <option value="Укр-літ">Укр-літ</option>
+                    <option value="Зар-літ">Зар-літ</option>
+                    <option value="Фізика">Фізика</option>
+                    <option value="Хімія">Хімія</option>
+                    <option value="Біологія">Біологія</option>
+                    <option value="Франц-мова">Франц-мова</option>
+                    <option value="Географія">Географія</option>
+                    <option value="Іст-укр">Іст-укр</option>
+                    <option value="Всес-іст">Всес-іст</option>
+                    <option value="Мистецтво">Мистецтво</option>
+                    <option value="Харківщино_знавство">Харківщино_знавство</option>
+                    <option value="Осн-здор">Осн-здор</option>
+                    <option value="Інформатика">Інформатика</option>
+                    <option value="Осн-прав">Осн-прав</option>
+                    <option value="Фіз-ра">Фіз-ра</option>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+                </select>
+                <br>
+                <textarea id="content" class="Description" placeholder="Description"></textarea>
+                <br>
+                <div class="alladd">
+                    <button id="addNoteBtn">+</button>
+                </div>
+                <div id="notesContainer">
 
-  const notesContainer = document.getElementById("notesContainer");
-  const addNoteBtn = document.getElementById("addNoteBtn");
-  const noteInput = document.getElementById("noteInput");
+                </div>
 
-  addNoteBtn.addEventListener("click", async () => {
-    const text = noteInput.value.trim();
-    if (!text) return;
-    await addDoc(collection(db, "notes"), {
-      text: text,
-      timestamp: serverTimestamp()
-    });
-    noteInput.value = "";
-  });
 
-  const q = query(collection(db, "notes"), orderBy("timestamp"));
-  onSnapshot(q, snapshot => {
-    notesContainer.innerHTML = "";
-    snapshot.forEach(docSnap => {
-      const note = docSnap.data();
-      const div = document.createElement("div");
-      div.classList.add("note");
-      div.textContent = note.text;
+            </div>
+            <script type="module">
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+                import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-      const delBtn = document.createElement("button");
-      delBtn.textContent = "❌";
-      delBtn.addEventListener("click", async () => {
-        await deleteDoc(doc(db, "notes", docSnap.id));
-      });
+                const firebaseConfig = {
+                    apiKey: "AIzaSyDoGVp7p6wRRUxRd8QZaNJWWzhHEyFUfFU",
+                    authDomain: "mylessons-29abd.firebaseapp.com",
+                    projectId: "mylessons-29abd",
+                    storageBucket: "mylessons-29abd.appspot.com",
+                    messagingSenderId: "231118261402",
+                    appId: "1:231118261402:web:d851149ff68321ed716323",
+                    measurementId: "G-91QYD60J05"
+                };
 
-      div.appendChild(delBtn);
-      notesContainer.appendChild(div);
-    });
-  });
-</script>
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+
+                const notesContainer = document.getElementById("notesContainer");
+                const addNoteBtn = document.getElementById("addNoteBtn");
+                const noteInput = document.getElementById("noteInput");
+
+                addNoteBtn.addEventListener("click", async () => {
+                    const text = noteInput.value.trim();
+                    if (!text) return;
+                    await addDoc(collection(db, "notes"), {
+                        text: text,
+                        timestamp: serverTimestamp()
+                    });
+                    noteInput.value = "";
+                });
+
+                const q = query(collection(db, "notes"), orderBy("timestamp"));
+                onSnapshot(q, snapshot => {
+                    notesContainer.innerHTML = "";
+                    snapshot.forEach(docSnap => {
+                        const note = docSnap.data();
+                        const div = document.createElement("div");
+                        div.classList.add("note");
+                        div.textContent = note.text;
+
+                        const delBtn = document.createElement("button");
+                        delBtn.textContent = "❌";
+                        delBtn.addEventListener("click", async () => {
+                            await deleteDoc(doc(db, "notes", docSnap.id));
+                        });
+
+                        div.appendChild(delBtn);
+                        notesContainer.appendChild(div);
+                    });
+                });
+            </script>
 
             <!-- <div class="navbar2">
                 <img src="list.svg" alt="" class="img2" width="50px">
@@ -136,44 +171,11 @@
                         </svg>
                         <h5 class="homework" id="homework">Homework</h5>
                     </div>
-
-                    <div class="two2">
-                        <select id="title" class="titleInpText" name="Title" required>
-                            <option value="Алгебра">Алгебра</option>
-                            <option value="Геометрія">Геометрія</option>
-                            <option value="Укр-мова">Укр-мова</option>
-                            <option value="Укр-літ">Укр-літ</option>
-                            <option value="Зар-літ">Зар-літ</option>
-                            <option value="Фізика">Фізика</option>
-                            <option value="Хімія">Хімія</option>
-                            <option value="Біологія">Біологія</option>
-                            <option value="Франц-мова">Франц-мова</option>
-                            <option value="Географія">Географія</option>
-                            <option value="Іст-укр">Іст-укр</option>
-                            <option value="Всес-іст">Всес-іст</option>
-                            <option value="Мистецтво">Мистецтво</option>
-                            <option value="Харківщино_знавство">Харківщино_знавство</option>
-                            <option value="Осн-здор">Осн-здор</option>
-                            <option value="Інформатика">Інформатика</option>
-                            <option value="Осн-прав">Осн-прав</option>
-                            <option value="Фіз-ра">Фіз-ра</option>
-
-                        </select>
-                        <br>
-                        <textarea id="content" class="Description" placeholder="Description"></textarea>
-                        <br>
-                        <div class="alladd">
-                            <button id="addBtn">+</button>
-                        </div>
-                        <div id="notes">
-
-                        </div>
+                -->
 
 
-                    </div>
-
-                </div>
-            </div> -->
+            <!-- </div>
+            </div>  -->
         </header>
 
 
