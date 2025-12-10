@@ -154,7 +154,6 @@
             <p class="content" contenteditable="true">${note.description}</p>
             <p class="date">${note.timestamp ? new Date(note.timestamp.seconds * 1000).toLocaleString() : new Date().toLocaleString()}</p>
             <div class="controls">
-                <button class="archive">Archive</button>
                 <button class="remove">Remove</button>
             </div>
         `;
@@ -162,7 +161,6 @@
                         // Получаем элементы внутри блока
                         const titleElem = div.querySelector(".title");
                         const contentElem = div.querySelector(".content");
-                        const archiveBtn = div.querySelector(".archive");
                         const removeBtn = div.querySelector(".remove");
 
                         // Сохраняем изменения в Firebase при потере фокуса
@@ -172,20 +170,6 @@
 
                         contentElem.addEventListener("blur", async () => {
                             await updateDoc(doc(db, "notes", docSnap.id), { description: contentElem.textContent });
-                        });
-
-                        // Архивирование
-                        archiveBtn.addEventListener("click", async () => {
-                            try {
-                                // Обновляем поле isArchived в базе
-                                await updateDoc(doc(db, "notes", docSnap.id), { isArchived: true });
-
-                                // Ставим визуальный эффект (полупрозрачность)
-                                div.style.opacity = "0.6"; // например, 60% прозрачность
-                                div.classList.add("archived"); // для стилизации через CSS
-                            } catch (error) {
-                                console.error("Ошибка при архивировании:", error);
-                            }
                         });
 
 
