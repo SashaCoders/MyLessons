@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="cvghh.js" defer></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="dialogoverlay"></div>
+    <div id="dialogbox">
+        <div>
+            <div id="dialogboxhead"></div>
+            <div id="dialogboxbody"></div>
+            <div id="dialogboxfoot"></div>
+        </div>
+    </div>
+    <div class="wrapper">
+
+        <header>
+            <div class="navbar">
+                <img src="list.svg" alt="" class="img" width="50px">
+                <div class="rules">
+
+                    <div class="one1">
+                        <div class="btn-close"></div>
+                        <h5 class="rozklad" id="rozklad">РОЗКЛАД</h5>
+                    </div>
+
+                    <div class="two">
+                        <ul class="ul">
+                            <li> <a class="nav-link active" style="color: #000000" aria-current="page"
+                                    href="#monday">ПОНЕДІЛОК</a></li>
+                            <li><a class="nav-link" style="color: #000000" href="#tuesday">ВІВТОРОК</a></li>
+                            <li> <a class="nav-link " style="color: #000000" href="#wednesday">СЕРЕДА</a></li>
+                            <li> <a class="nav-link " style="color: #000000" aria-current="page"
+                                    href="#thusday">ЧЕТВЕРГ</a></li>
+                            <li> <a class="nav-link" style="color: #000000" href="#faiday">П'ЯТНИЦЯ</a></li>
+                            <li> <a class="nav-link " style="color: #000000" href="#slide">КНИГИ</a></li>
+
+                            <div class="show2" id="show">
+                                <p> H/S PLAN</p>
+                            </div>
+                        </ul>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="navbar2">
+                <img src="list.svg" alt="" class="img2" width="50px">
+                <div class="rules2">
+
+                    <div class="one12">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                        <h5 class="homework" id="homework">Homework</h5>
+                    </div>
+
+                    <div class="two2">
+                        <select id="title" class="titleInpText" name="Title" required>
+                            <option value="Алгебра">Алгебра</option>
+                            <option value="Геометрія">Геометрія</option>
+                            <option value="Укр-мова">Укр-мова</option>
+                            <option value="Укр-літ">Укр-літ</option>
+                            <option value="Зар-літ">Зар-літ</option>
+                            <option value="Фізика">Фізика</option>
+                            <option value="Хімія">Хімія</option>
+                            <option value="Біологія">Біологія</option>
+                            <option value="Франц-мова">Франц-мова</option>
+                            <option value="Географія">Географія</option>
+                            <option value="Іст-укр">Іст-укр</option>
+                            <option value="Всес-іст">Всес-іст</option>
+                            <option value="Мистецтво">Мистецтво</option>
+                            <option value="Харківщино_знавство">Харківщино_знавство</option>
+                            <option value="Осн-здор">Осн-здор</option>
+                            <option value="Інформатика">Інформатика</option>
+                            <option value="Осн-прав">Осн-прав</option>
+                            <option value="Фіз-ра">Фіз-ра</option>
+
+
+                            <!--  <option value=""></option>
+                            <option value=""></option>   -->
+
+                        </select>
+                        <br>
+                        <textarea id="content" class="Description" placeholder="Description"></textarea>
+                        <br>
+                        <div class="alladd">
+                            <button id="addBtn">+</button>
+                        </div>
+                        <div id="notes">
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+
+        <section id="monday">
+
+
+            <p>
+
+                <a href="monday" style="color: white" class="fof">
+                    ПОНЕДІЛОК
+                </a>
+            </p>
+
+
+
+
+
+
+            <ol>
+
+                <b>
+
+                    <li>
+                        <p>
+
+                            <a href="https://us05web.zoom.us/j/85089255942?pwd=9ZP18Hf7QRPrDnQkEUZTUqlVBcFabh#success"
+                                target="_blank" class="fof">
+                                УКР-ЛІТ 09:00
+                            </a>
+                        </p>
+
+                    </li>
+
+                    <li>
+                        <p>
+                            <a href="https://us05web.zoom.us/j/85089255942?pwd=9ZP18Hf7QRPrDnQkEUZTUqlVBcFabh.1#success"
+                                target="_blank" class="fof">
+                                УКР-МОВА 09:55
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            <a href="https://us04web.zoom.us/j/9096823222?pwd=ak1XbmprdFBUQnRZOWszWU91VHdyUT09#success"
+                                target="_blank" class="fof">
+                                ФРАНЦ-МОВА 10:50
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            <a href="https://us04web.zoom.us/j/9363848876?pwd=jC1Nt25QcB1YQlr9IkmgyW4k4yvs6B#success"
+                                target="_blank" class="fof">
+                                АЛГЕБРА 11:45
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+
+                        <p>
+                            <a href="https://us05web.zoom.us/j/83848697594?pwd=jWzPmsiPyVgQqncC4x6efptoI2tD97.1#success"
+                                target="_blank" class="fof">
+                                ФІЗИКА 12:40
+                            </a>
+
+                        </p>
+
+                    </li>
+                    <li>
+
+                        <p>
+                            <a href="https://us05web.zoom.us/j/6725698583?pwd=K041MkRXRTlJT1h2U2V5aFlDa0NKdz09#success"
+                                target="_blank" class="fof">
+                                ІСТ-УКР 13:35
+                            </a>
+
+                        </p>
+
+                    </li>
+
+
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/83848697594?pwd=jWzPmsiPyVgQqncC4x6efptoI2tD97.1#success"
+                                    target="_blank" class="fof">
+                                    ІНФОРМАТИКИ 14:30
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                </b>
+
+
+            </ol>
+
+            <h2>
+                <b>
+                    <a href="https://meet.google.com/ewv-iyty-vti" target="_blank" class="fof"
+                        style="height: 100px; align-content: center; font-size: 50px;">
+                        ПОЛІНА 16:30
+                    </a>
+
+                </b>
+            </h2>
+        </section>
+
+
+        <section id="tuesday">
+
+
+            <h2>
+                <u>
+                    <a href="#" style="color: white" class="fof">
+                        ВІВТОРОК
+                    </a>
+                </u>
+            </h2>
+
+
+
+
+
+
+            <ol>
+
+                <b>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/6725698583?pwd=K041MkRXRTlJT1h2U2V5aFlDa0NKdz09#success"
+                                    target="_blank" class="fof">
+                                    МИСТЕЦТВО 09:00
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b><!-- <a    -->
+                                <a href="https://us05web.zoom.us/j/2288301220?pwd=VjVDQXMrdzh5SVdPcUxUSGIyblllUT09#success"
+                                    target="_blank" class="fof">
+                                    ГЕОГРАФІЇ 09:55
+                                </a>
+
+                            </b>
+                        </h2>
+
+                    </li>
+
+                    <!-- <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/6725698583?pwd=K041MkRXRTlJT1h2U2V5aFlDa0NKdz09#success"
+                                    target="_blank" class="fof">
+                                    ІСТОРІЯ УКРАЇНИ 09:55
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li> -->
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/9212878927?pwd=cjJyNU1vWmh2WTh5b3VtYlFXNENOUT09#success"
+                                    target="_blank" class="fof">
+                                    ХІМІЯ 10:50
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/2288301220?pwd=VjVDQXMrdzh5SVdPcUxUSGIyblllUT09#success"
+                                    target="_blank" class="fof">
+                                    ОСНОВИ ПРАВОЗНАВСТВО 11:45
+                                </a>
+                            </b>
+                        </h2>
+
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://zoom.us/j/98530604279?pwd=Z4emm1UCHJsJaUJ6M4P1wCWg4c8juZ.1#success"
+                                    target="_blank" class="fof">
+                                    ЗАР-ЛІТ 12:40
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/4697114396?pwd=Tllsd1oza3dWdjdWMU9mTDZ1dTI0Zz09#success"
+                                    target="_blank" class="fof">
+                                    ФІЗ-РА 13:35
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us04web.zoom.us/j/9363848876?pwd=jC1Nt25QcB1YQlr9IkmgyW4k4yvs6B#success"
+                                    target="_blank" class="fof">
+                                    ГЕОМЕТРІЯ 14:30
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://zoom.us/j/98530604279?pwd=Z4emm1UCHJsJaUJ6M4P1wCWg4c8juZ.1#success"
+                                    target="_blank" class="fof">
+                                    УКР-МОВА ((І)) 15.25
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                </b>
+
+                <!-- <li>
+                    <h2>
+                        <b>
+                            <a href="https://us04web.zoom.us/j/8281849913?pwd=aWg3TkRscW15ZExEWWxqZ1BKTisydz09#success"
+                                target="_blank" class="fof">
+                                АНДРЕЙ МАРЧЕНКО
+                            </a>
+                        </b>
+                    </h2>
+                </li> -->
+
+            </ol>
+
+
+        </section>
+
+
+
+
+        <section id="wednesday">
+
+
+            <h2>
+                <u>
+                    <a href="#" style="color: white" class="fof">
+                        СЕРЕДА
+                    </a>
+                </u>
+            </h2>
+
+
+
+
+
+
+            <ol>
+
+                <b>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/85089255942?pwd=9ZP18Hf7QRPrDnQkEUZTUqlVBcFabh#success"
+                                    target="_blank" class="fof">
+                                    УКР-ЛІТ 09:00
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/85089255942?pwd=9ZP18Hf7QRPrDnQkEUZTUqlVBcFabh.1#success"
+                                    target="_blank" class="fof">
+                                    УКР-МОВА 09:55
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://zoom.us/j/98530604279?pwd=Z4emm1UCHJsJaUJ6M4P1wCWg4c8juZ.1#success"
+                                    target="_blank" class="fof">
+                                    ЗАР-ЛІТ 10:50
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us04web.zoom.us/j/9363848876?pwd=jC1Nt25QcB1YQlr9IkmgyW4k4yvs6B"
+                                    target="_blank" class="fof">
+                                    АЛГЕБРА 11:45
+                                </a>
+                            </b>
+                        </h2>
+
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/6725698583?pwd=K041MkRXRTlJT1h2U2V5aFlDa0NKdz09"
+                                    target="_blank" class="fof">
+                                    ХАРКІВЩИНО ЗНАВСТВО 12:40
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/83848697594?pwd=jWzPmsiPyVgQqncC4x6efptoI2tD97.1"
+                                    target="_blank" class="fof">
+                                    ФІЗИКА 13:35
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us04web.zoom.us/j/9096823222?pwd=ak1XbmprdFBUQnRZOWszWU91VHdyUT09#success"
+                                    target="_blank" class="fof">
+                                    ФРАНЦ-МОВА 14:30
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://zoom.us/j/98530604279?pwd=Z4emm1UCHJsJaUJ6M4P1wCWg4c8juZ.1#success"
+                                    target="_blank" class="fof">
+                                    УКР-ЛІТ ((І)) 15.25
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                </b>
+
+            </ol>
+        </section>
+
+
+        <section id="thusday">
+
+
+
+            <h2>
+                <u>
+                    <a href="#" style="color: white" class="fof">
+                        ЧЕТВЕРГ
+                    </a>
+                </u>
+            </h2>
+
+
+
+
+
+
+            <ol>
+                <h2>
+                    <b>
+                        <a href="https://us04web.zoom.us/j/9096823222?pwd=ak1XbmprdFBUQnRZOWszWU91VHdyUT09#success"
+                            target="_blank" class="fof">
+                            ТРАВМАТИЗМ 8:45
+
+                        </a>
+
+                    </b>
+                </h2>
+                <b>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/6725698583?pwd=K041MkRXRTlJT1h2U2V5aFlDa0NKdz09#success"
+                                    target="_blank" class="fof">
+                                    ВСЕС-ІСТ 9:00
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/4697114396?pwd=Tllsd1oza3dWdjdWMU9mTDZ1dTI0Zz09#success"
+                                    target="_blank" class="fof">
+                                    ФІЗ-РА 09:55
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/4697114396?pwd=Tllsd1oza3dWdjdWMU9mTDZ1dTI0Zz09#success"
+                                    target="_blank" class="fof">
+                                    ОСН-ЗДОР 10:50
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us04web.zoom.us/j/9363848876?pwd=jC1Nt25QcB1YQlr9IkmgyW4k4yvs6B#success"
+                                    target="_blank" class="fof">
+                                    ГЕОМЕТРІЯ 11:45
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/83848697594?pwd=jWzPmsiPyVgQqncC4x6efptoI2tD97.1#success"
+                                    target="_blank" class="fof">
+                                    ФІЗИКА 12:40
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/9212878927?pwd=cjJyNU1vWmh2WTh5b3VtYlFXNENOUT09#success"
+                                    target="_blank" class="fof">
+                                    БІОЛОГІЯ 13:35
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/2288301220?pwd=VjVDQXMrdzh5SVdPcUxUSGIyblllUT09#success"
+                                    target="_blank" class="fof">
+                                    ГЕОГРАФІЯ 14:30
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                </b>
+
+                <h2>
+                    <b>
+                        <a href="https://meet.google.com/ewv-iyty-vti" target="_blank" class="fof"
+                            style="height: 100px; align-content: center; font-size: 50px;">
+                            ПОЛІНА 15:45
+                        </a>
+                    </b>
+                </h2>
+
+                <!--    <li>
+                    <h2>
+                        <b>
+                            <a href="https://us04web.zoom.us/j/8281849913?pwd=aWg3TkRscW15ZExEWWxqZ1BKTisydz09#success"
+                                target="_blank" class="fof">
+                                АНДРЕЙ МАРЧЕНКО
+                            </a>
+
+                        </b>
+                    </h2>
+                </li>-->
+
+            </ol>
+
+
+        </section>
+
+
+
+        <section id="faiday">
+
+
+
+            <h2>
+                <u>
+                    <a href="#" style="color: white" class="fof">
+                        П'ЯТНИЦЯ
+                    </a>
+                </u>
+            </h2>
+
+
+
+
+
+            <ol>
+
+                <b>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/83848697594?pwd=jWzPmsiPyVgQqncC4x6efptoI2tD97.1#success"
+                                    target="_blank" class="fof">
+                                    ІНФОРМАТИКИ 09:00
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/4697114396?pwd=Tllsd1oza3dWdjdWMU9mTDZ1dTI0Zz09#success"
+                                    target="_blank" class="fof">
+                                    ФІЗ-РА 09:55
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/4697114396?pwd=Tllsd1oza3dWdjdWMU9mTDZ1dTI0Zz09#success"
+                                    target="_blank" class="fof">
+                                    ТЕХНОЛОГІЯ 10:50
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us04web.zoom.us/j/9096823222?pwd=ak1XbmprdFBUQnRZOWszWU91VHdyUT09#success"
+                                    target="_blank" class="fof">
+                                    ФРАНЦ-МОВА 11:45
+                                </a>
+                            </b>
+                        </h2>
+
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/9212878927?pwd=cjJyNU1vWmh2WTh5b3VtYlFXNENOUT09#success"
+                                    target="_blank" class="fof">
+                                    ХІМІЯ 12:40
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+
+                    <li>
+                        <h2>
+                            <b>
+                                <a href="https://us05web.zoom.us/j/9212878927?pwd=cjJyNU1vWmh2WTh5b3VtYlFXNENOUT09#success"
+                                    target="_blank" class="fof">
+                                    БІОЛОГІЯ 13:35
+                                </a>
+
+                            </b>
+                        </h2>
+                    </li>
+                </b>
+            </ol>
+
+
+        </section>
+
+        <footer class="footer">
+            <a href="#" class="ve">
+                <p> &copy: sasha</p>
+            </a>
+        </footer>
+
+    </div>
+</body>
+
+</html>

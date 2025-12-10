@@ -1,0 +1,657 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+
+}
+
+.men {
+    background: rgba(0, 0, 0, 0.0);
+
+}
+
+.fof:hover {
+    color: black;
+    background: rgba(224, 221, 221, 0.9);
+    transition: 1s;
+}
+
+.fof {
+    color: white;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 15px 5px;
+    width: 100%;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-image: linear-gradient(260deg, #2c5bc1 0%, #9968d1 100%);
+}
+
+header {
+    text-align: center;
+    width: 1000px;
+}
+
+.wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+#book {
+    display: flex;
+    justify-items: center;
+    display: none;
+    padding: 50px;
+}
+
+
+.one {
+    margin-bottom: 50px;
+}
+
+
+.one a {
+    padding: 0 0.5cm;
+}
+
+.ve {
+    color: white;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 15px 5px;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+
+
+
+.bob {
+
+    background: rgba(0, 0, 0, 0.4);
+
+}
+
+.slide {
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 400px;
+    background: white;
+    margin-bottom: 95px;
+}
+
+.show {
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 400px;
+    background: white;
+    margin-bottom: 95px;
+    margin-top: 45px;
+}
+
+
+section {
+    color: white;
+    /* padding: 2px; */
+    background: rgba(0, 0, 0, 0.2);
+    margin: 60px 0px;
+    text-align: center;
+}
+
+p {
+
+    font-size: 35px;
+}
+
+.footer {
+    text-align: center;
+    display: grid;
+    grid-column: 3 /-2;
+
+
+
+}
+
+
+
+
+
+.lop-pol img {
+    height: 200px;
+    width: 140px;
+
+}
+
+
+
+
+
+
+.img {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+}
+.img2 {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+}
+
+
+.rules {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: white;
+    width: 400px;
+    height: 100%;
+    display: none;
+}
+.rules2 {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(220, 202, 202);
+    width: 400px;
+    height: 100%;
+    display: none;
+}
+
+.one1 {
+    border-top-left-radius: 10px;
+    border-bottom: 3px solid black;
+    background: rgb(147, 140, 140);
+    height: 100px;
+    margin-bottom: 20px;
+}
+.one12 {
+    border-top-right-radius: 10px;
+    border-bottom: 3px solid black;
+    background: rgb(184, 179, 179);
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.two2{  min-height: 180px;   overflow-y: auto;}
+
+.btn-close {
+    font-size: 25px;
+    position: relative;
+    top: 20px;
+    right: -350px;
+}
+.bi-x-lg {
+    font-size: 25px;
+    position: relative;
+    top: 18px;
+    left: -170px;
+}
+.rozklad {
+    font-size: 30px;
+}
+
+.homework {
+    font-size: 30px;
+}
+
+
+.ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+}
+
+.ul li {
+    height: 45px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 10px 0;
+    background: rgba(118, 110, 110, 0.468);
+}
+
+
+
+
+
+.show2 {
+    width: 360px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 10px 0;
+    background: rgba(118, 110, 110, 0.468);
+    font-size: 10px;
+    padding-top: 15px;
+    order: 100;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.p {
+    font-size: 2px;
+    color: rgba(114, 175, 215, 0.5);
+    user-select: none;
+    text-decoration: none;
+} */
+
+
+
+/* Назва NOTEBOOK */
+h1 {
+    color: white;
+    font-size: 50px;
+    padding-bottom: 100px;
+}
+
+/* Поля ввода: заголовка, контента */
+.titleInpText,
+.Description {
+    width: 90%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    background-color: azure;
+    resize: vertical;
+    border: none;
+}
+
+/* Батьківський елемент кнопки: додавання заміток */
+.alladd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    /* Позволяет кнопкам переноситься */
+}
+
+/* Кнопка додавання */
+#addBtn{
+    flex: 1 1 140px;
+    /* гибкая ширина с базой 140px */
+    max-width: 150px;
+    min-width: 100px;
+    height: 50px;
+    border-radius: 35px;
+    box-shadow: 2px 4px 6px 1px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: bold;
+    border: none;
+    user-select: none; 
+      background: white;
+    font-size: 45px;
+    margin: 30px 0;
+    line-height: 1;
+}
+
+#addBtn:hover {
+    background: rgba(200, 199, 199, 0.774);
+    transform: scale(1.05);
+}
+
+/* Контейнер заміток */
+#notes {
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+    justify-self: center;
+    align-content: center;
+    display: flex;
+    border: 2px dashed rgb(49, 49, 49);
+    width:90%;
+    min-height: 180px;
+    padding: 20px;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* Замітка */
+.note {
+    margin: auto 0;
+    background: rgba(0, 0, 0, 0.711);
+    padding: 10px;
+    width: 95%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 13px;
+    position: relative;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+/* Заголовок замітки */
+.title {
+    font-size: 20px;
+    margin: 0 0 4px 0;
+    padding: 0;
+    resize: vertical;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+/* Контент замітки */
+.content {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    resize: vertical;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+}
+
+/* Дата створення замітки */
+.date {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.controls {
+    margin-top: 20px;
+    padding: 0 1em;
+}
+
+/* Видалення, Архівація */
+.archive,
+.remove {
+    height: 35px;
+    border-radius: 25px;
+    font-size: 20px;
+    margin: 0 1em;
+    padding: 0 2em;
+    cursor: pointer;
+}
+
+.remove {
+    margin: 0 0.5em;
+}
+
+/* Модальне вікно початок */
+#dialogoverlay {
+    display: none;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #626262;
+    width: 100%;
+    z-index: 10;
+}
+
+#dialogbox {
+    display: none;
+    position: fixed;
+    margin-top: -50px;
+    border-radius: 10px;
+    width: 550px;
+    z-index: 10;
+    border: 3px solid black;
+    box-shadow: 3px 4px 13px 3px;
+    background: #fff;
+}
+
+#dialogbox>div {
+    margin: 8px;
+}
+
+#dialogboxhead {
+    font-size: 24px;
+    padding: 10px;
+    color: #000000;
+    margin-bottom: -15px;
+    background: #ffffff;
+}
+
+#dialogboxbody {
+    font-size: 18px;
+    padding: 20px;
+    color: #000000;
+    background: #ffffff;
+}
+
+#dialogboxfoot {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    text-align: right;
+    background: #ffffff;
+}
+
+.btn {
+    margin-top: 25px;
+    border-radius: 4px;
+    color: #FFF;
+    font-weight: bold;
+    padding: 6px 15px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .5);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, .5);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+    outline: none;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0));
+}
+
+.btn:focus {
+    box-shadow: 0 0 15px #2B72D5;
+}
+
+.btn:active {
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.ok {
+    width: 60px;
+    font-size: 16px;
+    margin: 10px;
+    background-color: #5CB811;
+    border: 1px solid #3B7808;
+}
+
+.not {
+    width: 80px;
+    font-size: 16px;
+    margin: 10px;
+    background-color: #FE1A00;
+    border: 1px solid #D83526;
+}
+
+/* --- Адаптив для мобильных --- */
+
+/* @media (max-width: 600px) {
+    .main {
+        width: 95%;
+        padding-top: 40px;
+    }
+
+    #notes {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .note {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    .titleInpText,
+    .Description {
+        width: 100%;
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 30px;
+        padding-bottom: 40px;
+    }
+
+    #addBtn,
+    #allRem {
+        flex: 1 1 120px;
+        font-size: 28px;
+        height: 48px;
+        max-width: none;
+        min-width: 100px;
+        margin: 8px;
+    }
+
+    .last-note-btn {
+        bottom: 10px;
+        right: 10px;
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .title,
+    .content,
+    .date,
+    .deadline,
+    .startCountdown {
+        font-size: 16px;
+    }
+
+    .archive,
+    .remove {
+        font-size: 16px;
+        padding: 0 1em;
+    }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+@media all and (max-width: 400px) {
+    .fiex-nav li {
+        flex-basis: 100%;
+    }
+
+    .wrapper {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+
+
+    section {
+
+
+        margin: 60px 0px;
+    }
+
+    .lop-pol {
+        display: grid;
+        grid-template-columns: 60px 60px;
+        grid-column: 2 / -2;
+        gap: 90px;
+        grid-template-rows: auto;
+        padding: 50px;
+    }
+
+} */
