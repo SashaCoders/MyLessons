@@ -14,17 +14,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Firebase App (обязательный) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<!-- Firebase App (обязательно) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
 
-<!-- Дополнительно: Authentication -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-
-<!-- Дополнительно: Firestore -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
-<!-- Дополнительно: Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
 
 </head>
 
@@ -72,8 +66,65 @@
 
                 </div>
             </div>
+<div>
+  <input type="text" id="noteInput" placeholder="Новая заметка">
+  <button id="addNoteBtn">Добавить</button>
+</div>
 
-            <div class="navbar2">
+<div id="notesContainer"></div>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDoGVp7p6wRRUxRd8QZaNJWWzhHEyFUfFU",
+    authDomain: "mylessons-29abd.firebaseapp.com",
+    projectId: "mylessons-29abd",
+    storageBucket: "mylessons-29abd.appspot.com",
+    messagingSenderId: "231118261402",
+    appId: "1:231118261402:web:d851149ff68321ed716323",
+    measurementId: "G-91QYD60J05"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const notesContainer = document.getElementById("notesContainer");
+  const addNoteBtn = document.getElementById("addNoteBtn");
+  const noteInput = document.getElementById("noteInput");
+
+  addNoteBtn.addEventListener("click", async () => {
+    const text = noteInput.value.trim();
+    if (!text) return;
+    await addDoc(collection(db, "notes"), {
+      text: text,
+      timestamp: serverTimestamp()
+    });
+    noteInput.value = "";
+  });
+
+  const q = query(collection(db, "notes"), orderBy("timestamp"));
+  onSnapshot(q, snapshot => {
+    notesContainer.innerHTML = "";
+    snapshot.forEach(docSnap => {
+      const note = docSnap.data();
+      const div = document.createElement("div");
+      div.classList.add("note");
+      div.textContent = note.text;
+
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "❌";
+      delBtn.addEventListener("click", async () => {
+        await deleteDoc(doc(db, "notes", docSnap.id));
+      });
+
+      div.appendChild(delBtn);
+      notesContainer.appendChild(div);
+    });
+  });
+</script>
+
+            <!-- <div class="navbar2">
                 <img src="list.svg" alt="" class="img2" width="50px">
                 <div class="rules2">
 
@@ -107,10 +158,6 @@
                             <option value="Осн-прав">Осн-прав</option>
                             <option value="Фіз-ра">Фіз-ра</option>
 
-
-                            <!--  <option value=""></option>
-                            <option value=""></option>   -->
-
                         </select>
                         <br>
                         <textarea id="content" class="Description" placeholder="Description"></textarea>
@@ -126,7 +173,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
         </header>
 
 
@@ -755,27 +802,6 @@
         </footer>
 
     </div>
-    <script>
-  // Конфигурация проекта Firebase
-  const firebaseConfig = {
-    apiKey: "ТВОЙ_API_KEY",
-    authDomain: "ТВОЙ_PROJECT_ID.firebaseapp.com",
-    projectId: "ТВОЙ_PROJECT_ID",
-    storageBucket: "ТВОЙ_PROJECT_ID.appspot.com",
-    messagingSenderId: "ТВОЙ_SENDER_ID",
-    appId: "ТВОЙ_APP_ID",
-    databaseURL: "https://ТВОЙ_PROJECT_ID.firebaseio.com" // если нужен Realtime Database
-  };
-
-  // Инициализация Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-
-  // Пример подключения к Firestore
-  const db = firebase.firestore();
-
-  // Пример подключения к Realtime Database
-  const database = firebase.database();
-</script>
 
 </body>
 
