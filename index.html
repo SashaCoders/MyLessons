@@ -74,7 +74,7 @@
 <div id="notesContainer"></div> -->
 
             <div class="two2">
-                <select id="noteInput" placeholder="Новая заметка" class="titleInpText" name="Title" required>
+                <select id="noteInput" class="titleInpText" name="Title" required>
                     <option value="Алгебра">Алгебра</option>
                     <option value="Геометрія">Геометрія</option>
                     <option value="Укр-мова">Укр-мова</option>
@@ -93,7 +93,6 @@
                     <option value="Інформатика">Інформатика</option>
                     <option value="Осн-прав">Осн-прав</option>
                     <option value="Фіз-ра">Фіз-ра</option>
-
                 </select>
                 <br>
                 <textarea id="content" class="Description" placeholder="Description"></textarea>
@@ -101,12 +100,9 @@
                 <div class="alladd">
                     <button id="addNoteBtn">+</button>
                 </div>
-                <div id="notesContainer">
-
-                </div>
-
-
+                <div id="notesContainer"></div>
             </div>
+
             <script type="module">
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
                 import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
@@ -127,17 +123,24 @@
                 const notesContainer = document.getElementById("notesContainer");
                 const addNoteBtn = document.getElementById("addNoteBtn");
                 const noteInput = document.getElementById("noteInput");
+                const contentInput = document.getElementById("content");
 
+                // Добавление заметки
                 addNoteBtn.addEventListener("click", async () => {
-                    const text = noteInput.value.trim();
-                    if (!text) return;
+                    const title = noteInput.value;
+                    const description = contentInput.value.trim();
+                    if (!description) return;
+
                     await addDoc(collection(db, "notes"), {
-                        text: text,
+                        title: title,
+                        description: description,
                         timestamp: serverTimestamp()
                     });
-                    noteInput.value = "";
+
+                    contentInput.value = "";
                 });
 
+                // Синхронизация и отображение заметок
                 const q = query(collection(db, "notes"), orderBy("timestamp"));
                 onSnapshot(q, snapshot => {
                     notesContainer.innerHTML = "";
@@ -145,7 +148,7 @@
                         const note = docSnap.data();
                         const div = document.createElement("div");
                         div.classList.add("note");
-                        div.textContent = note.text;
+                        div.innerHTML = `<strong>${note.title}</strong><br>${note.description}`;
 
                         const delBtn = document.createElement("button");
                         delBtn.textContent = "❌";
@@ -158,6 +161,7 @@
                     });
                 });
             </script>
+
 
             <!-- <div class="navbar2">
                 <img src="list.svg" alt="" class="img2" width="50px">
