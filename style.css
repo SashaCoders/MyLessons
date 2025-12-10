@@ -393,6 +393,7 @@ h1 {
 
 /* Контент замітки */
 .content {
+    color: white;
     font-size: 20px;
     margin: 0 0 10px 0;
     padding: 0;
@@ -406,6 +407,7 @@ h1 {
 
 /* Дата створення замітки */
 .date {
+    color: white;
     font-size: 20px;
     margin-bottom: 10px;
 }
