@@ -4,16 +4,6 @@
 
 
 
-
-
-
-
-const KEY = "restdb_cache_posts";
-
-const cache = localStorage.getItem(KEY);
-
-
-
 // GET notes
 var getSettings = {
     async: true,
@@ -27,15 +17,11 @@ var getSettings = {
     }
 };
 
-if (cache) {
-    show(JSON.parse(cache));
-    console.log( show(JSON.parse(cache)));
-} else {
     $.ajax(getSettings).done(function (response) {
         localStorage.setItem(KEY, JSON.stringify(response));
         draw(response); // сразу отрисовываем заметки
     });
-}
+
 
 
 
