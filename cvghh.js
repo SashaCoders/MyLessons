@@ -1,6 +1,20 @@
 
 
-// GET настройки
+
+
+
+
+
+
+
+
+const KEY = "restdb_cache_posts";
+
+const cache = localStorage.getItem(KEY);
+
+
+
+// GET notes
 var getSettings = {
     async: true,
     crossDomain: true,
@@ -13,12 +27,19 @@ var getSettings = {
     }
 };
 
-// GET заметок
-$.ajax(getSettings).done(function (response) {
-    console.log(response);
-    draw(response);
-});
+if (cache) {
+    show(JSON.parse(cache));
+    console.log( show(JSON.parse(cache)));
+} else {
+    $.ajax(getSettings).done(function (response) {
+        localStorage.setItem(KEY, JSON.stringify(response));
+        draw(response); // сразу отрисовываем заметки
+    });
+}
 
+
+
+// Функция для отображения заметок
 function draw(items) {
     const $container = $("#notesContainer");
     $container.empty();
@@ -26,14 +47,14 @@ function draw(items) {
     const arr = Array.isArray(items) ? items : [items];
     arr.forEach(item => {
         const $note = $(`
-<div class="note" data-id="${item._id}">
-    <h1 class="title" contenteditable="true">${item.noteInput}</h1>
-    <p class="content" contenteditable="true">${item.content}</p>
-    <p class="date">${item.datatime}</p>
-    <div class="controls">
-        <button class="remove">Remove</button>
-    </div>
-</div>
+            <div class="note" data-id="${item._id}">
+                <h1 class="title" contenteditable="true">${item.noteInput || ""}</h1>
+                <p class="content" contenteditable="true">${item.content || ""}</p>
+                <p class="date">${item.datatime || ""}</p>
+                <div class="controls">
+                    <button class="remove">Remove</button>
+                </div>
+            </div>
         `);
         $container.append($note);
     });
@@ -44,7 +65,6 @@ $(document).ready(function () {
     // DELETE заметки
     $("#notesContainer").on("click", ".remove", function () {
         const noteId = $(this).closest(".note").data("id");
-        console.log("ID для удаления:", noteId);
 
         $.ajax({
             async: true,
@@ -56,26 +76,27 @@ $(document).ready(function () {
                 "content-type": "application/json"
             }
         })
-        .done(function () {
-            console.log("Удалено:", noteId);
-            $(`.note[data-id="${noteId}"]`).remove();
-        })
-        .fail(function (err) {
-            console.error("Ошибка удаления:", err.responseText);
-        });
+            .done(function () {
+                $(`.note[data-id="${noteId}"]`).remove();
+            })
+            .fail(function (err) {
+                console.error("Ошибка удаления:", err.responseText);
+            });
     });
 
     // POST заметки
-    var postSettings = {
+    const postSettings = {
         async: true,
         crossDomain: true,
         url: "https://mylessons-c08d.restdb.io/rest/plan",
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "x-apikey": "695ccc857ba9c9f74b78475c"
+            "content-type": "application/json",
+            "x-apikey": "695ccc857ba9c9f74b78475c",
+            "cache-control": "no-cache"
         },
-        data: null
+        processData: false,
+        data: null // сюда будем подставлять данные при добавлении
     };
 
     $("#addNoteBtn").click(function () {
@@ -84,34 +105,93 @@ $(document).ready(function () {
         let datatime = new Date().toISOString(); // корректная дата
 
         let jsondata = { noteInput, content, datatime };
-        console.log(jsondata);
 
         postSettings.data = JSON.stringify(jsondata);
 
         $.ajax(postSettings)
-        .done(function (response) {
-            console.log("OK:", response);
+            .done(function (response) {
 
-            // добавляем новую заметку в DOM сразу
-            draw([response, ...Array.from($("#notesContainer .note").map((_, el) => {
-                return {
-                    _id: $(el).data("id"),
-                    noteInput: $(el).find(".title").text(),
-                    content: $(el).find(".content").text(),
-                    datatime: $(el).find(".date").text()
-                }
-            }))]);
 
-            // очищаем поля
-            $("#noteInput").val('');
-            $("#content").val('');
-        })
-        .fail(function (err) {
-            console.error("ERROR:", err.responseText);
-        });
+                // добавляем новую заметку в DOM сразу
+                draw([response, ...Array.from($("#notesContainer .note").map((_, el) => {
+                    return {
+                        _id: $(el).data("id"),
+                        noteInput: $(el).find(".title").text(),
+                        content: $(el).find(".content").text(),
+                        datatime: $(el).find(".date").text()
+                    };
+                }))]);
+
+                // очищаем поля
+                $("#noteInput").val('');
+                $("#content").val('');
+            })
+            .fail(function (err) {
+                console.error("Ошибка добавления:", err.responseText);
+            });
     });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
