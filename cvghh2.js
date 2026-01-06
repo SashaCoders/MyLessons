@@ -5,12 +5,12 @@ var settings = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
-        "x-apikey": "7dcf86b0f5f0fd2f8de664b0b0d946b9cd8bf"
+        "x-apikey": "695ccc857ba9c9f74b78475c"
     },
     data: null
 };
 
-$("#btn").click(function () {
+$("#addNoteBtn").click(function () {
 
     let noteInput = $("#noteInput").val();
     let content = $("#content").val();

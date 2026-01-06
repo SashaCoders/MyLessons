@@ -60,7 +60,7 @@ var settings = {
     "method": "GET",
     "headers": {
         "content-type": "application/json",
-        "x-apikey": "7dcf86b0f5f0fd2f8de664b0b0d946b9cd8bf",
+        "x-apikey": "695ccc857ba9c9f74b78475c",
         "cache-control": "no-cache"
     }
 }
