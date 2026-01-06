@@ -22,12 +22,12 @@
 // addNoteBtn.addEventListener("click", () => {
 //   const text = noteInput.value.trim();
 //   if (!text) return;
-  
+
 //   db.collection("notes").add({
 //     text: text,
 //     timestamp: firebase.firestore.FieldValue.serverTimestamp()
 //   });
-  
+
 //   noteInput.value = "";
 // });
 
@@ -52,6 +52,49 @@
 //       notesContainer.appendChild(div);
 //     });
 //   });
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://mylessons-c08d.restdb.io/rest/plan",
+    "method": "GET",
+    "headers": {
+        "content-type": "application/json",
+        "x-apikey": "7dcf86b0f5f0fd2f8de664b0b0d946b9cd8bf",
+        "cache-control": "no-cache"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    draw(response);
+});
+
+
+function draw(person) {
+    const $conteiner = $("#notesContainer");
+    $conteiner.empty();
+
+    const items = Array.isArray(person) ? person : [person];
+    items.forEach(item => {
+        const $personCard = $(`
+<div class="note">
+         <h1 class="title" contenteditable="true">${item.noteInput}</h1>
+            <p class="content" contenteditable="true">${item.content}</p>
+            <p class="date">${item.datatime}</p>
+            <div class="controls">
+                <button class="remove">Remove</button>
+            </div>
+</div>
+    `);
+        $conteiner.append($personCard);
+    });
+}
+
+
+
+
+
 
 
 
@@ -162,14 +205,13 @@ $(".bi-x-lg").click(function () {
     $(".rules2").css('display', 'none');
 });
 
-
 function clock() {
     let dates = new Date();
     hh = dates.getDay();
     hs = dates.getHours();
     ms = dates.getMinutes();
     ss = dates.getSeconds();
-  // console.log(hh + " " + hs + " " + ms + " " + ss);
+    // console.log(hh + " " + hs + " " + ms + " " + ss);
 }
 setInterval(clock, 3600000);
 
@@ -269,7 +311,7 @@ setInterval(clock, 3600000);
 //                 document.getElementById('dialogbox').style.display = "none";
 //                 document.getElementById('dialogoverlay').style.display = "none";
 
-//                 // Видалення 
+//                 // Видалення
 //                 note.remove();
 
 //                 // Збереження

@@ -11,6 +11,7 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="cvghh.js" defer></script>
+    <script src="cvghh2.js" defer></script>
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 
@@ -112,104 +113,6 @@
                         </div>
                         <div id="notesContainer"></div>
                     </div>
-
-                    <script type="module">
-                        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-                        import {
-                            getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, updateDoc
-                        } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
-
-                        const firebaseConfig = {
-                            apiKey: "AIzaSyDoGVp7p6wRRUxRd8QZaNJWWzhHEyFUfFU",
-                            authDomain: "mylessons-29abd.firebaseapp.com",
-                            projectId: "mylessons-29abd",
-                            storageBucket: "mylessons-29abd.appspot.com",
-                            messagingSenderId: "231118261402",
-                            appId: "1:231118261402:web:d851149ff68321ed716323",
-                            measurementId: "G-91QYD60J05"
-                        };
-
-                        const app = initializeApp(firebaseConfig);
-                        const db = getFirestore(app);
-
-                        const notesContainer = document.getElementById("notesContainer");
-                        const addNoteBtn = document.getElementById("addNoteBtn");
-                        const noteInput = document.getElementById("noteInput");
-                        const contentInput = document.getElementById("content");
-
-                        // Добавление заметки
-                        addNoteBtn.addEventListener("click", async () => {
-                            const title = noteInput.value;
-                            const description = contentInput.value.trim();
-                            if (!description) return;
-
-                            await addDoc(collection(db, "notes"), {
-                                title: title,
-                                description: description,
-                                timestamp: serverTimestamp()
-                            });
-
-                            contentInput.value = "";
-                        });
-
-                        // Синхронизация и отображение заметок
-                        const q = query(collection(db, "notes"), orderBy("timestamp"));
-                        onSnapshot(q, snapshot => {
-                            // Очищаем контейнер перед обновлением
-                            notesContainer.innerHTML = "";
-
-                            // Перебор всех документов и создание блоков заметок
-                            snapshot.forEach(docSnap => {
-                                const note = docSnap.data();
-
-                                // Создаём блок заметки
-                                const div = document.createElement("div");
-                                div.classList.add("note");
-                                div.innerHTML = `
-            <h1 class="title" contenteditable="true">${note.title}</h1>
-            <p class="content" contenteditable="true">${note.description}</p>
-            <p class="date">${note.timestamp ? new Date(note.timestamp.seconds * 1000).toLocaleString() : new Date().toLocaleString()}</p>
-            <div class="controls">
-                <button class="remove">Remove</button>
-            </div>
-        `;
-
-                                // Получаем элементы внутри блока
-                                const titleElem = div.querySelector(".title");
-                                const contentElem = div.querySelector(".content");
-                                const removeBtn = div.querySelector(".remove");
-
-                                // Сохраняем изменения в Firebase при потере фокуса
-                                titleElem.addEventListener("blur", async () => {
-                                    await updateDoc(doc(db, "notes", docSnap.id), { title: titleElem.textContent });
-                                });
-
-                                contentElem.addEventListener("blur", async () => {
-                                    await updateDoc(doc(db, "notes", docSnap.id), { description: contentElem.textContent });
-                                });
-
-
-                                // Удаление заметки
-                                removeBtn.addEventListener("click", async (e) => {
-                                    // Показываем окно подтверждения
-                                    const confirmDelete = confirm("Точно хочешь удалить эту заметку?");
-
-                                    if (confirmDelete) {
-                                        // Если пользователь подтвердил, удаляем из Firebase
-                                        await deleteDoc(doc(db, "notes", docSnap.id));
-                                    } else {
-                                        // Если отменил — ничего не делаем
-                                        return;
-                                    }
-                                });
-
-                                // Добавляем блок в контейнер
-                                notesContainer.appendChild(div);
-                            });
-                        });
-
-                    </script>
-
                 </div>
             </div>
         </header>
