@@ -18,7 +18,6 @@ var getSettings = {
 };
 
     $.ajax(getSettings).done(function (response) {
-        localStorage.setItem(KEY, JSON.stringify(response));
         draw(response); // сразу отрисовываем заметки
     });
 
